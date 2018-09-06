@@ -1,5 +1,9 @@
 package devs.mulham.horizontalcalendar.model;
 
+import android.graphics.Typeface;
+
+import devs.mulham.horizontalcalendar.HorizontalCalendar;
+
 /**
  * @author Mulham-Raee
  * @since v1.2.5
@@ -21,6 +25,9 @@ public class HorizontalCalendarConfig {
     private float sizeTopText;
     private float sizeMiddleText;
     private float sizeBottomText;
+    private Typeface fontTopText;
+    private Typeface fontMiddleText;
+    private Typeface fontBottomText;
 
     private Integer selectorColor;
     private boolean showTopText;
@@ -81,6 +88,22 @@ public class HorizontalCalendarConfig {
         return this;
     }
 
+    public HorizontalCalendarConfig setTopTextFont(Typeface typeface) {
+        this.fontTopText = typeface;
+        return this;
+    }
+
+    public HorizontalCalendarConfig setMiddleTextFont(Typeface typeface) {
+        this.fontMiddleText = typeface;
+        return this;
+    }
+
+    public HorizontalCalendarConfig setBottomTextFont(Typeface typeface) {
+        this.fontBottomText = typeface;
+        return this;
+    }
+
+
     public String getFormatTopText() {
         return formatTopText;
     }
@@ -115,6 +138,18 @@ public class HorizontalCalendarConfig {
 
     public boolean isShowBottomText() {
         return showBottomText;
+    }
+
+    public Typeface getFontTopText() {
+        return fontTopText;
+    }
+
+    public Typeface getFontMiddleText() {
+        return fontMiddleText;
+    }
+
+    public Typeface getFontBottomText() {
+        return fontBottomText;
     }
 
     public void setupDefaultValues(HorizontalCalendarConfig defaultConfig) {

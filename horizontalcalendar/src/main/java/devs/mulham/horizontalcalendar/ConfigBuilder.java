@@ -1,5 +1,6 @@
 package devs.mulham.horizontalcalendar;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 import devs.mulham.horizontalcalendar.model.CalendarItemStyle;
@@ -11,7 +12,7 @@ import devs.mulham.horizontalcalendar.model.HorizontalCalendarConfig;
  */
 public class ConfigBuilder {
 
-    /* Format & Font Sizes*/
+    /* Format, Fonts and Font Sizes*/
     private float sizeTopText;
     private float sizeMiddleText;
     private float sizeBottomText;
@@ -19,6 +20,9 @@ public class ConfigBuilder {
     private String formatTopText;
     private String formatMiddleText;
     private String formatBottomText;
+    private Typeface topTextFont;
+    private Typeface middleTextFont;
+    private Typeface bottomTextFont;
     private boolean showTopText = true;
     private boolean showBottomText = true;
 
@@ -143,6 +147,21 @@ public class ConfigBuilder {
         return this;
     }
 
+    public ConfigBuilder fontTopText(Typeface typeface) {
+        this.topTextFont = typeface;
+        return this;
+    }
+
+    public ConfigBuilder fontMiddleText(Typeface typeface) {
+        this.middleTextFont = typeface;
+        return this;
+    }
+
+    public ConfigBuilder fontBottomText(Typeface typeface) {
+        this.bottomTextFont = typeface;
+        return this;
+    }
+
     public HorizontalCalendar.Builder end() {
         if (formatMiddleText == null) {
             formatMiddleText = HorizontalCalendarConfig.DEFAULT_FORMAT_TEXT_MIDDLE;
@@ -163,7 +182,9 @@ public class ConfigBuilder {
         config.setFormatBottomText(formatBottomText);
         config.setShowTopText(showTopText);
         config.setShowBottomText(showBottomText);
-
+        config.setBottomTextFont(bottomTextFont);
+        config.setMiddleTextFont(middleTextFont);
+        config.setTopTextFont(topTextFont);
         return config;
     }
 

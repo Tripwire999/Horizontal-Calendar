@@ -3,6 +3,7 @@ package devs.mulham.raee.sample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     .showTopText(true)
                     .showBottomText(true)
                     .textColor(Color.LTGRAY, Color.WHITE)
+                    .fontTopText(ResourcesCompat.getFont(this, R.font.roboto_regular))
                     .colorTextMiddle(Color.LTGRAY, Color.parseColor("#ffd54f"))
                 .end()
                 .defaultSelectedDate(defaultSelectedDate)

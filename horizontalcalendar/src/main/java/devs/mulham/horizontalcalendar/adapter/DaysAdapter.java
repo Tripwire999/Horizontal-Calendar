@@ -50,9 +50,16 @@ public class DaysAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder, C
         holder.textMiddle.setText(DateFormat.format(config.getFormatMiddleText(), day));
         holder.textMiddle.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.getSizeMiddleText());
 
+        if (config.getFormatMiddleText() != null) {
+            holder.textMiddle.setTypeface(config.getFontMiddleText());
+        }
+
         if (config.isShowTopText()) {
             holder.textTop.setText(DateFormat.format(config.getFormatTopText(), day));
             holder.textTop.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.getSizeTopText());
+            if (config.getFontTopText() != null) {
+                holder.textTop.setTypeface(config.getFontTopText());
+            }
         } else {
             holder.textTop.setVisibility(View.GONE);
         }
@@ -60,6 +67,9 @@ public class DaysAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder, C
         if (config.isShowBottomText()) {
             holder.textBottom.setText(DateFormat.format(config.getFormatBottomText(), day));
             holder.textBottom.setTextSize(TypedValue.COMPLEX_UNIT_SP, config.getSizeBottomText());
+            if (config.getFontBottomText() != null) {
+                holder.textBottom.setTypeface(config.getFontBottomText());
+            }
         } else {
             holder.textBottom.setVisibility(View.GONE);
         }
