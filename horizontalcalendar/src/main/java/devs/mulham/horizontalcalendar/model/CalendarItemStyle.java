@@ -11,19 +11,21 @@ public class CalendarItemStyle {
     private int colorTopText;
     private int colorMiddleText;
     private int colorBottomText;
+    private int colorWeekendText;
     private Drawable background;
 
     public CalendarItemStyle(){
     }
 
-    public CalendarItemStyle(int textColor, Drawable background) {
-        this(textColor, textColor, textColor, background);
+    public CalendarItemStyle(int textColor, int weekendTextColor, Drawable background) {
+        this(textColor, textColor, textColor, weekendTextColor, background);
     }
 
-    public CalendarItemStyle(int colorTopText, int colorMiddleText, int colorBottomText, Drawable background) {
+    public CalendarItemStyle(int colorTopText, int colorMiddleText, int colorBottomText, int colorWeekendText, Drawable background) {
         this.colorTopText = colorTopText;
         this.colorMiddleText = colorMiddleText;
         this.colorBottomText = colorBottomText;
+        this.colorWeekendText = colorWeekendText;
         this.background = background;
     }
 
@@ -54,6 +56,14 @@ public class CalendarItemStyle {
         return this;
     }
 
+    public int getColorWeekendText() { return colorWeekendText; }
+
+    public CalendarItemStyle setColorWeekendText(int colorWeekendText) {
+        this.colorWeekendText = colorWeekendText;
+        return this;
+    }
+
+
     public Drawable getBackground() {
         return background;
     }
@@ -76,6 +86,11 @@ public class CalendarItemStyle {
         if (colorBottomText == 0) {
             colorBottomText = defaultValues.colorBottomText;
         }
+        if (colorWeekendText == 0) {
+            colorWeekendText = defaultValues.colorWeekendText;
+        }
+
+
         if (background == null) {
             background = defaultValues.background;
         }

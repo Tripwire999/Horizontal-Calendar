@@ -43,6 +43,8 @@ public class DaysAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder, C
         HorizontalCalendarConfig config = horizontalCalendar.getConfig();
 
         final Integer selectorColor = horizontalCalendar.getConfig().getSelectorColor();
+
+
         if (selectorColor != null) {
             holder.selectionView.setBackgroundColor(selectorColor);
         }

@@ -116,7 +116,7 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
             boolean isDisabled = disablePredicate.test(date);
             viewHolder.itemView.setEnabled(!isDisabled);
             if (isDisabled && (disabledItemStyle != null)) {
-                applyStyle(viewHolder, disabledItemStyle);
+                applyStyle(viewHolder, disabledItemStyle, checkIfWeekend(date));
                 viewHolder.selectionView.setVisibility(View.INVISIBLE);
                 return;
             }
@@ -124,26 +124,37 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
 
         // Selected Day
         if (position == selectedItemPosition) {
-            applyStyle(viewHolder, horizontalCalendar.getSelectedItemStyle());
+            applyStyle(viewHolder, horizontalCalendar.getSelectedItemStyle(), checkIfWeekend(date));
             viewHolder.selectionView.setVisibility(View.VISIBLE);
         }
         // Unselected Days
         else {
-            applyStyle(viewHolder, horizontalCalendar.getDefaultStyle());
+            applyStyle(viewHolder, horizontalCalendar.getDefaultStyle(), checkIfWeekend(date));
             viewHolder.selectionView.setVisibility(View.INVISIBLE);
         }
     }
 
-    protected void applyStyle(VH viewHolder, CalendarItemStyle itemStyle) {
+    protected void applyStyle(VH viewHolder, CalendarItemStyle itemStyle, Boolean isWeekend) {
         viewHolder.textTop.setTextColor(itemStyle.getColorTopText());
         viewHolder.textMiddle.setTextColor(itemStyle.getColorMiddleText());
         viewHolder.textBottom.setTextColor(itemStyle.getColorBottomText());
+
+        if (isWeekend) {
+            viewHolder.textTop.setTextColor(itemStyle.getColorWeekendText());
+            viewHolder.textMiddle.setTextColor(itemStyle.getColorWeekendText());
+            viewHolder.textBottom.setTextColor(itemStyle.getColorWeekendText());
+        }
 
         if (Build.VERSION.SDK_INT >= 16) {
             viewHolder.itemView.setBackground(itemStyle.getBackground());
         } else {
             viewHolder.itemView.setBackgroundDrawable(itemStyle.getBackground());
         }
+    }
+
+    private boolean checkIfWeekend(Calendar calendar) {
+        int currentDay = calendar.get(Calendar.DAY_OF_WEEK);
+        return currentDay == Calendar.SATURDAY || currentDay == Calendar.SUNDAY;
     }
 
     public void update(Calendar startDate, Calendar endDate, boolean notify) {

@@ -9,6 +9,8 @@
         <attr name="colorMiddleText" format="color" />
         <!-- Default Bottom text color -->
         <attr name="colorBottomText" format="color" />
+        <!-- Default Weekend text color -->
+        <attr name="colorWeekendText" format="color" />
 
         <!-- Selected item's text color for all texts -->
         <attr name="textColorSelected" format="color" />
@@ -18,9 +20,10 @@
         <attr name="colorMiddleTextSelected" format="color" />
         <!-- Selected item's Bottom text color -->
         <attr name="colorBottomTextSelected" format="color" />
+        <!-- Selected item's Weekend text color -->
+        <attr name="colorWeekendTextSelected" format="color" />
         <!-- Selected item's background drawable -->
         <attr name="selectedDateBackground" format="reference" />
-
         <!-- Background color for selector bar. -->
         <attr name="selectorColor" format="color" />
 

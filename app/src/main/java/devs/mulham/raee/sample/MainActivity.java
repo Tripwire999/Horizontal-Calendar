@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     .showTopText(true)
                     .showBottomText(true)
                     .textColor(Color.LTGRAY, Color.WHITE)
+                    .colorWeekendText(Color.BLUE, Color.BLACK)
                     .fontTopText(ResourcesCompat.getFont(this, R.font.roboto_regular))
                     .colorTextMiddle(Color.LTGRAY, Color.parseColor("#ffd54f"))
                 .end()

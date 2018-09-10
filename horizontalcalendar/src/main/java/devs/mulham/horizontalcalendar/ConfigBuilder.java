@@ -30,6 +30,7 @@ public class ConfigBuilder {
     private int colorTextTop, colorTextTopSelected;
     private int colorTextMiddle, colorTextMiddleSelected;
     private int colorTextBottom, colorTextBottomSelected;
+    private int colorWeekendText, colorWeekendTextSelected;
     private Drawable selectedItemBackground;
 
     private final HorizontalCalendar.Builder calendarBuilder;
@@ -117,10 +118,12 @@ public class ConfigBuilder {
         colorTextTop = textColorNormal;
         colorTextMiddle = textColorNormal;
         colorTextBottom = textColorNormal;
+        colorWeekendText = textColorNormal;
 
         colorTextTopSelected = textColorSelected;
         colorTextMiddleSelected = textColorSelected;
         colorTextBottomSelected = textColorSelected;
+        colorWeekendTextSelected = textColorSelected;
         return this;
     }
 
@@ -139,6 +142,12 @@ public class ConfigBuilder {
     public ConfigBuilder colorTextBottom(int textColorNormal, int textColorSelected) {
         colorTextBottom = textColorNormal;
         colorTextBottomSelected = textColorSelected;
+        return this;
+    }
+
+    public ConfigBuilder colorWeekendText(int textColorNormal, int textColorSelected) {
+        colorWeekendText = textColorNormal;
+        colorWeekendTextSelected = textColorSelected;
         return this;
     }
 
@@ -189,10 +198,15 @@ public class ConfigBuilder {
     }
 
     CalendarItemStyle createDefaultStyle() {
-        return new CalendarItemStyle(colorTextTop, colorTextMiddle, colorTextBottom, null);
+        return new CalendarItemStyle(colorTextTop, colorTextMiddle, colorTextBottom, colorWeekendText, null);
     }
 
     CalendarItemStyle createSelectedItemStyle() {
-        return new CalendarItemStyle(colorTextTopSelected, colorTextMiddleSelected, colorTextBottomSelected, selectedItemBackground);
+        return new CalendarItemStyle(
+                colorTextTopSelected,
+                colorTextMiddleSelected,
+                colorTextBottomSelected,
+                colorWeekendTextSelected,
+                selectedItemBackground);
     }
 }

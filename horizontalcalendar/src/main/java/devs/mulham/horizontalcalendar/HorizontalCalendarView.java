@@ -44,11 +44,13 @@ public class HorizontalCalendarView extends RecyclerView {
             int colorTopText = a.getColor(R.styleable.HorizontalCalendarView_colorTopText, textColorNormal);
             int colorMiddleText = a.getColor(R.styleable.HorizontalCalendarView_colorMiddleText, textColorNormal);
             int colorBottomText = a.getColor(R.styleable.HorizontalCalendarView_colorBottomText, textColorNormal);
+            int colorWeekendText = a.getColor(R.styleable.HorizontalCalendarView_colorWeekendText, textColorNormal);
 
             int textColorSelected = a.getColor(R.styleable.HorizontalCalendarView_textColorSelected, Color.BLACK);
             int colorTopTextSelected = a.getColor(R.styleable.HorizontalCalendarView_colorTopTextSelected, textColorSelected);
             int colorMiddleTextSelected = a.getColor(R.styleable.HorizontalCalendarView_colorMiddleTextSelected, textColorSelected);
             int colorBottomTextSelected = a.getColor(R.styleable.HorizontalCalendarView_colorBottomTextSelected, textColorSelected);
+            int colorWeekendTextSelected = a.getColor(R.styleable.HorizontalCalendarView_colorWeekendTextSelected, textColorSelected);
             Drawable selectedDateBackground = a.getDrawable(R.styleable.HorizontalCalendarView_selectedDateBackground);
 
             int selectorColor = a.getColor(R.styleable.HorizontalCalendarView_selectorColor, fetchAccentColor());
@@ -60,8 +62,8 @@ public class HorizontalCalendarView extends RecyclerView {
                     HorizontalCalendarConfig.DEFAULT_SIZE_TEXT_BOTTOM);
 
 
-            defaultStyle = new CalendarItemStyle(colorTopText, colorMiddleText, colorBottomText, null);
-            selectedItemStyle = new CalendarItemStyle(colorTopTextSelected, colorMiddleTextSelected, colorBottomTextSelected, selectedDateBackground);
+            defaultStyle = new CalendarItemStyle(colorTopText, colorMiddleText, colorBottomText, colorWeekendText, null);
+            selectedItemStyle = new CalendarItemStyle(colorTopTextSelected, colorMiddleTextSelected, colorBottomTextSelected, colorWeekendTextSelected, selectedDateBackground);
             config = new HorizontalCalendarConfig(sizeTopText, sizeMiddleText, sizeBottomText, selectorColor);
 
         } finally {

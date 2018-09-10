@@ -159,6 +159,7 @@ public class HorizontalCalendarConfig {
         if (selectorColor == null) {
             selectorColor = defaultConfig.selectorColor;
         }
+
         if (sizeTopText == 0) {
             sizeTopText = defaultConfig.sizeTopText;
         }
