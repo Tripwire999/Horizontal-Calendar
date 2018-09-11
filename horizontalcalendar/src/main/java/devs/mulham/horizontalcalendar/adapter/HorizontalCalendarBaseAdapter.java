@@ -105,7 +105,7 @@ public abstract class HorizontalCalendarBaseAdapter<VH extends DateViewHolder, T
         } else {
             viewHolder.eventsRecyclerView.setVisibility(View.VISIBLE);
             EventsAdapter eventsAdapter = (EventsAdapter) viewHolder.eventsRecyclerView.getAdapter();
-            eventsAdapter.update(events);
+            eventsAdapter.update(events, eventsPredicate.maxEventsDotsShown());
         }
     }
 

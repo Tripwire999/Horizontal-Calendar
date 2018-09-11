@@ -21,6 +21,8 @@ import devs.mulham.horizontalcalendar.model.CalendarEvent;
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewHolder> {
 
     private List<CalendarEvent> eventList;
+    private int maxDotsShown = 0;
+    private Context context;
 
     public EventsAdapter(List<CalendarEvent> eventList) {
         this.eventList = eventList;
@@ -28,15 +30,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     @Override
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        ImageView imageView = new ImageView(context);
-
-        Drawable circle = ContextCompat.getDrawable(context, R.drawable.ic_circle_white_8dp);
-        Drawable drawableWrapper = DrawableCompat.wrap(circle);
-
-        imageView.setImageDrawable(drawableWrapper);
-
-        return new EventViewHolder(imageView);
+        this.context = parent.getContext();
+        return new EventViewHolder(new ImageView(context));
     }
 
     @Override
@@ -44,6 +39,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         CalendarEvent event = getItem(position);
 
         ImageView imageView = (ImageView) holder.itemView;
+
+        if (eventList.size() > maxDotsShown && position == (maxDotsShown  - 1)) {
+            setPlus(imageView);
+        } else {
+            setNormal(imageView);
+        }
 
         imageView.setContentDescription(event.getDescription());
         DrawableCompat.setTint(imageView.getDrawable(), event.getColor());
@@ -55,16 +56,36 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     @Override
     public int getItemCount() {
-        return eventList.size();
+        if (maxDotsShown == 0) {
+            return eventList.size();
+        }
+
+        if (eventList.size() <= maxDotsShown) {
+            return eventList.size();
+        } else {
+            return maxDotsShown;
+        }
     }
 
-    public void update(List<CalendarEvent> eventList) {
+    public void update(List<CalendarEvent> eventList, int maxDotsShown) {
         this.eventList = eventList;
+        this.maxDotsShown = maxDotsShown;
         notifyDataSetChanged();
     }
 
-    static class EventViewHolder extends RecyclerView.ViewHolder {
+    private void setPlus(ImageView imageView) {
+        Drawable plus = ContextCompat.getDrawable(context, R.drawable.ic_add_circle_white_8dp);
+        Drawable drawableWrapper = DrawableCompat.wrap(plus);
+        imageView.setImageDrawable(drawableWrapper);
+    }
 
+    private void setNormal(ImageView imageView) {
+        Drawable circle = ContextCompat.getDrawable(context, R.drawable.ic_circle_white_8dp);
+        Drawable drawableWrapper = DrawableCompat.wrap(circle);
+        imageView.setImageDrawable(drawableWrapper);
+    }
+
+    static class EventViewHolder extends RecyclerView.ViewHolder {
         EventViewHolder(View itemView) {
             super(itemView);
         }

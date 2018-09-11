@@ -16,4 +16,12 @@ public interface CalendarEventsPredicate {
      * @return a list of {@link CalendarEvent} related to this date.
      */
     List<CalendarEvent> events(Calendar date);
+
+    /**
+     * Maximum event dots shown in calendar until a + shows up
+     * 0 if no maximum
+     * @return the amount of dots shown
+     */
+
+    int maxEventsDotsShown();
 }
